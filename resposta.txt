@@ -1,1 +1,99 @@
 Coloque aqui todas as respostas das práticas indicadas no README.md
+
+Questâo 1: 
+
+Resposta 1: Rede - 172.18.0.0, Máscara de Rede - 255.255.0.0
+Resposta 2: 172.18.0.1
+Resposta 3: Duas rotas configuradas.
+
+Questâo 2:
+
+Resposta 1: 172.18.0.2
+Resposta 2: Rede - 172.18.0.0, Máscara - 255.255.00 ou /16
+Resposta 3: eth0
+
+Questâo 3:
+
+Resposta:
+- nslookup www.google.com - Ip: 172.217.30.68
+- nslookup www.whitehouse.gov - Ip: 192.0.66.51
+- nslookup www.rnp.br - Ip: 184.18.26.22 e 184.18.27.22
+- nslookup www.ufpb.br - Ip: 150.165.254.52
+
+Questâo 4: 
+
+Resposta 1: 
+- loopback tempo de respota: 0.066 ms
+- Ip próprio tempo de resposta: 0.095 ms
+
+Resposta 2:
+- ping www.ufpb.br - Tempo de resposta: 37.030 ms
+- ping www.yahoo.com - Tempo de resposta: 171.404 ms
+- ping www.brasil.gov.br - Tempo de resposta: 75.888 ms
+- ping www.dce.ufpb.br - Inacessível - ping: unknown host
+
+Resposta 3:
+- ping www.google.com - Tempo de resposta: 58.451 ms
+- ping www.rnp.br - Tempo de resposta: 59.214 ms
+- ping www.whitehouse.gov - Tempo de resposta: 58.500 ms
+- O que pode influenciar as diferenças nos tempos? 
+    - Distância Geográfica
+    - Roteamento de Rede
+    - Capacidade da banda
+    - Latência do servidor
+    - Vários fatores podem influenciar a diferença nos tempos de resposta.
+
+Questâo 5:
+
+Resposta 1: Bloqueio de pacotes ICMP, configurações de segurança ou políticas de rede.
+Isso não significa que há um problema na rede, apenas protocolos que as redes em especifico devem seguir.
+
+Questâo 6:
+
+Resposta 1: Ao utilizar o comando netstat -tulnp novas informações foram apresentados como tcp, udp local adress.
+            Mas ao utilizar o comando netstat -r para mostrar a tabela de roteamento e comparar com route -n, deu o mesmo resultado.
+
+Questâo 7:
+
+Resposta 1: Sim: telnet www.ufpb.br 80
+Trying 150.165.254.52...
+Connected to www.ufpb.br.
+Escape character is '^]'.
+Connection closed by foreign host. 
+- Isso significa que o servidor esta ativo. Porém, a conexão foi fechada por alguma restrição.
+
+Resposta 2: telnet www.dce.ufpb.br 21
+Server lookup failure:  www.dce.ufpb.br:21, Name or service not known
+- Não conseguimos conexão. O problema de rede pode ser diferenciado do problema de serviço nos dois casos acima.
+- Problema de rede pois a conexão não foi estabelecida ou recusada.
+- Problema de serviço quando conseguimos conectar mas não temos a resposta que esperamos.
+
+Questâo 8:
+
+Resposta 1: O MTR (My Traceroute) é uma ferramenta que combina funcionalidades de ping e traceroute
+            - Permiti visualizar o caminho dos pacotes ate um destino e o tempo de resposta de cada salto na rota.
+            - Util para diagnosticar problemas de rede, como perda de pacotes e latência em cada ponto da rota.
+
+Resposta 2: Por detalhar informações como caminho dos pacotes e tempo de resposta de saltos na rota.
+            O comando é extremamente util no gerenciamento de redes, pois:
+            - Apresenta diagnostico de Latência e perda de pacotes
+            - Identificação de gargalos e congestionamentos
+            - Monitoramento de rede em tempo real 
+            - Entre outros detalhes em que ele pode ser útil
+
+Resposta 3:
+- Saida que aparece no terminal e suas caracteristicas:
+    - HOST: Mostra o endereço IP ou o nome do host (roteador ou servidor) em cada salto.
+    - Loss%: Percentual de pacotes perdidos em cada salto. Idealmente, deve ser 0%. Perda de pacotes indica problemas de comunicação em algum ponto da rede.
+    - Snt: O número de pacotes enviados para cada hop.
+    - Last: O tempo de resposta (latência) do último pacote enviado, em milissegundos (ms).
+    - Avg: A média do tempo de resposta de todos os pacotes enviados.
+    - Best: O melhor tempo de resposta (latência mínima).
+    - Wrst: O pior tempo de resposta (latência máxima).
+    - StDev: O desvio padrão da latência, indicando a variação nos tempos de resposta.
+
+Resultado ao testar mtr www.google.com:
+
+Host                 Loss%   Snt   Last   Avg  Best  Wrst StDev 
+ 1. 172.18.0.1       0.0%     8    0.1   0.1   0.0   0.2   0.1                                                                                                                                                                   
+ 2. 172.217.28.132   0.0%     8   57.7  57.5  55.8  58.4   0.8 
